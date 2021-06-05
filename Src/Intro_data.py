@@ -3,3 +3,5 @@
 
 import pandas as pd
 
+df = pd.read_csv("D:\\Chinmay\\TheInnocentCat\\Data-Analysis-with-Pandas\\Data-Analysis-with-Pandas\\Data_Sets\\avocado.csv")
+print(df)
