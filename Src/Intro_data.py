@@ -14,5 +14,27 @@ df = pd.read_csv(data_path)
 # print(df["AveragePrice"].head())
 # =============================================================================
 
-albany_df = df[ df["region"]=='Albany' ]
-print(albany_df.head())
+# =============================================================================
+# albany_df = df[ df["region"]=='Albany' ]
+# print(albany_df.head())
+# =============================================================================
+# setting index as date
+# inplace will modify the original df
+# albany_df.set_index("Date", inplace = True)
+# to set into new df, use following --> 
+# albany_df = df[ df["region"]=='Albany' ]
+# albany_df_date_idx = albany_df.set_index("Date")
+# print(albany_df_date_idx)
+
+# Plots the graph
+# albany_df_date_idx.plot()
+# albany_df_date_idx["AveragePrice"].plot()
+
+# Pandas didnt recognize that date is a date format. so x axis will look wierd
+# convert date column in date format
+
+df["Date"] = pd.to_datetime(df["Date"])
+albany_df = df[df["region"] == "Albany"]
+albany_df = albany_df.set_index("Date")
+albany_df["AveragePrice"].plot()
+
