@@ -64,10 +64,18 @@ albany_df.sort_index(inplace = True)
 albany_df["Price_25_MA"] = albany_df["AveragePrice"].rolling(25).mean()
 albany_df = albany_df.dropna()
 
-print(albany_df)
+# print(albany_df)
 
+# Converting data frame to an array
+ar = albany_df.values
+regions = df["region"].values
 
+print(set(regions))
 
+# Better way for above
+print("-------------------")
+regions_1 = df["region"].unique()
+print(regions_1)
 
 
 
