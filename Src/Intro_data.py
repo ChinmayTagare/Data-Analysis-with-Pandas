@@ -36,5 +36,53 @@ df = pd.read_csv(data_path)
 df["Date"] = pd.to_datetime(df["Date"])
 albany_df = df[df["region"] == "Albany"]
 albany_df = albany_df.set_index("Date")
-albany_df["AveragePrice"].plot()
+
+# albany_df["AveragePrice"].plot()
+# 
+albany_df = albany_df.sort_index()
+print(albany_df)
+# 25 moving average
+albany_df["AveragePrice"].rolling(25).mean().plot()
+# 
+# =============================================================================
+# Creating new column as price 25 moving average
+
+albany_df["Price_25_MA"] = albany_df["AveragePrice"].rolling(25).mean()
+print(albany_df.head()) # first 25 - nothing to calculate, that;s why it NaN
+
+print(albany_df.tail())
+
+# dropping NA
+albany_df.dropna().head() # now we got the values in head - dropped NaN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
